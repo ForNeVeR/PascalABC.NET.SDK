@@ -35,6 +35,7 @@ public static class Artifacts
         if (!expectedSha256.Equals(actualSha256, StringComparison.OrdinalIgnoreCase))
             throw new Exception($"Hash mismatch for URI {uri}: expected {expectedSha256}, got {actualSha256}.");
 
+        Directory.CreateDirectory(directory);
         var fileName = Path.GetFileName(uri.LocalPath);
         var filePath = Path.Combine(directory, fileName);
         await File.WriteAllBytesAsync(filePath, data);
