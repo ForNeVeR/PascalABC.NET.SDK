@@ -15,7 +15,7 @@ jobs:
     strategy:
       matrix:
         environment:
-          # TODO: Support platforms other than Windows. 
+          # TODO[#4]: Support platforms other than Windows.
           # - macos-latest
           # - ubuntu-latest
           - windows-latest
