@@ -22,6 +22,10 @@ Usage
 
        <Import Project="$(MSBuildThisFileDirectory)..\PascalABC.NET.SDK\Sdk\Sdk.props" />
 
+       <PropertyGroup>
+           <TargetFramework>net472</TargetFramework>
+       </PropertyGroup>
+
        <ItemGroup>
            <MainCompile Include="Hello1.pas" />
            <MainCompile Include="Hello2.pas" />

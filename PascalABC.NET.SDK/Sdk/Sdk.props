@@ -2,6 +2,14 @@
 
     <PropertyGroup>
         <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
+
+        <PascalABCNETCompilerPackageName>FVNever.PascalABC.NET.Compiler</PascalABCNETCompilerPackageName>
+        <PascalABCNETCompilerPackageVersion>3.8.3.3169</PascalABCNETCompilerPackageVersion>
     </PropertyGroup>
 
+    <ItemGroup Condition=" $(SkipPascalABCNETCompilerInstallation) != 'true' ">
+        <PackageReference Include="$(PascalABCNETCompilerPackageName)" Version="$(PascalABCNETCompilerPackageVersion)" PrivateAssets="All"/>
+    </ItemGroup>
+
+    <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk"/>
 </Project>

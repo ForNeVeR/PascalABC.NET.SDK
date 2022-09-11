@@ -1,13 +1,15 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
+    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition=" '$(CommonTargetsPath)' == '' " />
+
     <PropertyGroup>
+        <PascalABCNETCompilerPackagePath>$(NuGetPackageRoot)$(PascalABCNETCompilerPackageName)\$(PascalABCNETCompilerPackageVersion)</PascalABCNETCompilerPackagePath>
+
+        <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' and $(SkipPascalABCNETCompilerInstallation) != true ">$(PascalABCNETCompilerPackagePath)\tools\pabcnetc.exe</PascalAbcCompilerAssembly>
         <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' ">pabcnetc.exe</PascalAbcCompilerAssembly>
 
         <PascalAbcCompilerCommand Condition=" $(PascalAbcCompilerCommand) == '' ">$(PascalAbcCompilerAssembly)</PascalAbcCompilerCommand>
     </PropertyGroup>
-
-    <ItemGroup>
-    </ItemGroup>
 
     <!--
         Due to a bug in pabcnetc (https://github.com/pascalabcnet/pascalabcnet/issues/2708), it always writes the output
@@ -20,7 +22,7 @@
         overwritten. To avoid this unexpected overwrite, we check that such item doesn't exist (OutputItemCheck target).
     -->
 
-    <Target Name="OutputItemCheck" BeforeTargets="Compile">
+    <Target Name="OutputItemCheck" BeforeTargets="Compile" DependsOnTargets="Restore">
         <ItemGroup>
             <_CompileOutput Include="@(MainCompile -> '%(RootDir)%(Directory)%(FileName).exe')" />
             <_CompileOutput Include="@(MainCompile -> '%(RootDir)%(Directory)%(FileName).pdb')" />
