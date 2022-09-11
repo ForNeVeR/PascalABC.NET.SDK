@@ -10,8 +10,8 @@
     </ItemGroup>
 
     <!--
-        Due to a bug in pabcnetc, it always writes the output assembly to the input file directory when called in a way
-        we're calling it.
+        Due to a bug in pabcnetc (https://github.com/pascalabcnet/pascalabcnet/issues/2708), it always writes the output
+         assembly to the input file directory when called in a way we're calling it.
 
         Because of this, we have to implement a hack: move the assembly file to the output directory after the
         compilation (Compile target).
