@@ -5,7 +5,7 @@ namespace PascalABC.NET.SDK.TestFramework;
 
 public static class Artifacts
 {
-    // TODO: Replace with NuGet.
+    // TODO[#3]: Replace with NuGet.
     private static Uri Url = new("http://pascalabc.net/downloads/PABCNETC.zip");
     private const string Sha256 = "0EE974C1038F3AEBAED40688FC7CD287454FBCFFE71E49FB231E90F97E5120D4";
 
