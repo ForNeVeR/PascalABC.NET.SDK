@@ -53,12 +53,6 @@ Other (non-main) `.pas` files may be added as `<Compile>` items, which are only 
 Development
 -----------
 
-To build the project, run the following command in your shell:
-
-```console
-$ dotnet build
-```
-
 To run the unit testing suite, run the following command in your shell:
 
 ```console
