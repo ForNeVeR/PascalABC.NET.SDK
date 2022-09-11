@@ -1,8 +1,8 @@
-<Project Sdk="Microsoft.Build.NoTargets/3.5.6">
-    
+<Project Sdk="Microsoft.Build.NoTargets">
+
     <ItemGroup>
         <Content Include="Sdk\Sdk.props" />
         <Content Include="Sdk\Sdk.targets" />
     </ItemGroup>
-    
+
 </Project>

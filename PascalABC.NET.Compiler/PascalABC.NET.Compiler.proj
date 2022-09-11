@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.Build.NoTargets">
+
+    <PropertyGroup>
+        <PackageVersion>3.8.3.3169</PackageVersion>
+        <CompilerHash>0EE974C1038F3AEBAED40688FC7CD287454FBCFFE71E49FB231E90F97E5120D4</CompilerHash>
+    </PropertyGroup>
+    
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <NuspecFile>$(MSBuildThisFileDirectory)PascalABC.NET.Compiler.nuspec</NuspecFile>
+        <NuspecProperties>version=$(PackageVersion)</NuspecProperties>
+        <NoDefaultExcludes>true</NoDefaultExcludes>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <None Include="PascalABC.NET.Compiler.nuspec"/>
+    </ItemGroup>
+
+    <Target Name="GetCompiler" BeforeTargets="GetCopyToPublishDirectoryItems; GenerateNuspec">
+        <DownloadFile SourceUrl="http://pascalabc.net/downloads/PABCNETC.zip"
+                      DestinationFolder="$(BaseIntermediateOutputPath)"
+                      DestinationFileName="PABCNETC.zip"
+                      SkipUnchangedFiles="true"/>
+        <VerifyFileHash File="$(BaseIntermediateOutputPath)\PABCNETC.zip"
+                        Hash="$(CompilerHash)"
+                        Algorithm="SHA256"/>
+        <Unzip DestinationFolder="$(BaseIntermediateOutputPath)\PABCNETC"
+               SourceFiles="$(BaseIntermediateOutputPath)\PABCNETC.zip"/>
+    </Target>
+
+</Project>
