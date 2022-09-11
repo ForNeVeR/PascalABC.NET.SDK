@@ -3,6 +3,29 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK", "PascalABC.NET.SDK\PascalABC.NET.SDK.proj", "{A6F3861E-A99B-4355-87BD-4A2EBE71625A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.Tests", "PascalABC.NET.SDK.Tests\PascalABC.NET.SDK.Tests.csproj", "{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.TestFramework", "PascalABC.NET.SDK.TestFramework\PascalABC.NET.SDK.TestFramework.csproj", "{848A5D5C-C2F0-4D21-A30D-220CA2A83915}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.Demo", "PascalABC.NET.SDK.Demo\PascalABC.NET.SDK.Demo.pasproj", "{5B3F2D24-A8C0-4543-82D0-EFBF3229C95F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{4CB4DDBD-3CD2-4CFD-B540-7E870C60E931}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+		.gitignore = .gitignore
+		LICENSE.md = LICENSE.md
+		README.md = README.md
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{824BE205-E976-4553-AD61-C84F84A743B7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{C92E99D5-8DB6-4197-A916-8B539E7D2A83}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\main.yml = .github\workflows\main.yml
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -10,5 +33,22 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{848A5D5C-C2F0-4D21-A30D-220CA2A83915}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{848A5D5C-C2F0-4D21-A30D-220CA2A83915}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{848A5D5C-C2F0-4D21-A30D-220CA2A83915}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{848A5D5C-C2F0-4D21-A30D-220CA2A83915}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B3F2D24-A8C0-4543-82D0-EFBF3229C95F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B3F2D24-A8C0-4543-82D0-EFBF3229C95F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B3F2D24-A8C0-4543-82D0-EFBF3229C95F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B3F2D24-A8C0-4543-82D0-EFBF3229C95F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{C92E99D5-8DB6-4197-A916-8B539E7D2A83} = {824BE205-E976-4553-AD61-C84F84A743B7}
 	EndGlobalSection
 EndGlobal

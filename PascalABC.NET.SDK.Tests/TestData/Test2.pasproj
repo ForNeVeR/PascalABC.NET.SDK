@@ -1,0 +1,12 @@
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
+
+    <Import Project="$(MSBuildThisFileDirectory)Sdk\Sdk.props" />
+
+    <ItemGroup>
+        <MainCompile Include="Hello1.pas" />
+        <MainCompile Include="Hello2.pas" />
+    </ItemGroup>
+
+    <Import Project="$(MSBuildThisFileDirectory)Sdk\Sdk.targets" />
+
+</Project>

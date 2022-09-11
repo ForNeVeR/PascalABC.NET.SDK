@@ -1,0 +1,53 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+        <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' ">pabcnetc.exe</PascalAbcCompilerAssembly>
+
+        <PascalAbcCompilerCommand Condition=" $(PascalAbcCompilerCommand) == '' ">$(PascalAbcCompilerAssembly)</PascalAbcCompilerCommand>
+    </PropertyGroup>
+
+    <ItemGroup>
+    </ItemGroup>
+
+    <!--
+        Due to a bug in pabcnetc, it always writes the output assembly to the input file directory when called in a way
+        we're calling it.
+
+        Because of this, we have to implement a hack: move the assembly file to the output directory after the
+        compilation (Compile target).
+
+        And if there's already something in the current compilation directory at the moment of compilation, it would be
+        overwritten. To avoid this unexpected overwrite, we check that such item doesn't exist (OutputItemCheck target).
+    -->
+
+    <Target Name="OutputItemCheck" BeforeTargets="Compile">
+        <ItemGroup>
+            <_CompileOutput Include="@(MainCompile -> '%(RootDir)%(Directory)%(FileName).exe')" />
+            <_CompileOutput Include="@(MainCompile -> '%(RootDir)%(Directory)%(FileName).pdb')" />
+
+            <_ExistingCompileOutput Include="@(_CompileOutput)" Condition=" Exists(%(FullPath)) " />
+        </ItemGroup>
+
+        <Error Condition=" @(_ExistingCompileOutput->Count()) > 0 "
+               Text="Items &quot;%(_ExistingCompileOutput.FullPath)&quot; already exist on disk but would be removed after compilation. Please clean up manually." />
+    </Target>
+
+    <Target Name="Compile" BeforeTargets="Build"
+            Inputs="%(Compile.FullPath);@(MainCompile -> '%(FullPath)')"
+            Outputs="
+                @(MainCompile -> '$(OutDir)\%(FileName).exe');
+                @(MainCompile -> '$(OutDir)\%(FileName).pdb')">
+
+        <ItemGroup>
+            <_CurrentCompileOutput Include="@(MainCompile -> '%(RootDir)%(Directory)%(FileName).exe')" />
+            <_CurrentCompileOutput Include="@(MainCompile -> '%(RootDir)%(Directory)%(FileName).pdb')" />
+        </ItemGroup>
+
+        <Exec Command="$(PascalAbcCompilerCommand) /noconsole %(MainCompile.FullPath)" />
+
+        <Move SourceFiles="%(_CurrentCompileOutput.FullPath)" DestinationFolder="$(OutDir)" />
+    </Target>
+
+    <Target Name="Build" />
+
+</Project>

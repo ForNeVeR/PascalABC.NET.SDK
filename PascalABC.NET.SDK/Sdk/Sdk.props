@@ -1,0 +1,7 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+
+    <PropertyGroup>
+        <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
+    </PropertyGroup>
+
+</Project>
