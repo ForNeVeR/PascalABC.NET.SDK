@@ -10,7 +10,7 @@ Usage
 
 1. For now, only Windows is supported as the target platform.
 2. Download [.NET 6 SDK][dotnet.sdk] or later.
-3. Download [PascalABC.NET console compiler][pascalabc.net.downloads] (`PABCNET.ZIP`), extract it somewhere on your disk, and add the directory to the `PATH` environment variable.
+3. Download [PascalABC.NET console compiler][pascalabc.net.downloads] (`PABCNETC.ZIP`), extract it somewhere on your disk, and add the directory to the `PATH` environment variable.
 
 ### Quick Start
 
