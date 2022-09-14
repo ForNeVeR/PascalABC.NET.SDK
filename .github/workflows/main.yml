@@ -32,14 +32,15 @@ jobs:
         with:
           dotnet-version: '6.0.x'
 
-      - name: Download NuGet cache
-        uses: actions/cache@v2
-        with:
-          path: ${{ env.NUGET_PACKAGES }}
-          key: ${{ runner.os }}.nuget.${{ hashFiles('**/*.csproj') }}
+      - name: Build NuGet packages
+        shell: pwsh
+        run: ./scripts/build-packages.ps1
 
       - name: Restore Nuget packages
         run: dotnet restore
+
+      - name: Build the project
+        run: dotnet build
 
       - name: Test
         run: dotnet test PascalABC.NET.SDK.Tests

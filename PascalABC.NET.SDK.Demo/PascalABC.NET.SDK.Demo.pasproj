@@ -1,6 +1,4 @@
-<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
-
-    <Import Project="$(MSBuildThisFileDirectory)..\PascalABC.NET.SDK\Sdk\Sdk.props" />
+<Project Sdk="FVNever.PascalABC.NET.SDK/0.0.1-dev">
 
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
@@ -10,7 +8,5 @@
         <MainCompile Include="Hello1.pas" />
         <MainCompile Include="Hello2.pas" />
     </ItemGroup>
-
-    <Import Project="$(MSBuildThisFileDirectory)..\PascalABC.NET.SDK\Sdk\Sdk.targets" />
 
 </Project>

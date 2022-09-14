@@ -1,8 +1,21 @@
 <Project Sdk="Microsoft.Build.NoTargets">
 
+    <PropertyGroup Label="Versioning">
+        <VersionPrefix>0.0.1</VersionPrefix>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Packaging">
+        <PackageId>FVNever.PascalABC.NET.SDK</PackageId>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <NoWarn>NU5128</NoWarn> <!-- suppress a warning about the wrong target (we have to choose some target, but it's not important for us) -->
+    </PropertyGroup>
+
     <ItemGroup>
-        <Content Include="Sdk\Sdk.props" />
-        <Content Include="Sdk\Sdk.targets" />
+        <Content Include="Sdk\Sdk.props" PackagePath="Sdk\Sdk.props" />
+        <Content Include="Sdk\Sdk.targets" PackagePath="Sdk\Sdk.targets" />
     </ItemGroup>
 
 </Project>

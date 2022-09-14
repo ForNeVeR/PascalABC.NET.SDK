@@ -1,14 +1,15 @@
 ﻿<Project Sdk="Microsoft.Build.NoTargets">
 
     <PropertyGroup>
-        <PackageVersion>3.8.3.3169</PackageVersion>
+        <VersionPrefix>3.8.3.3169</VersionPrefix>
         <CompilerHash>0EE974C1038F3AEBAED40688FC7CD287454FBCFFE71E49FB231E90F97E5120D4</CompilerHash>
     </PropertyGroup>
-    
+
     <PropertyGroup>
         <TargetFramework>net6.0</TargetFramework>
         <NuspecFile>$(MSBuildThisFileDirectory)PascalABC.NET.Compiler.nuspec</NuspecFile>
-        <NuspecProperties>version=$(PackageVersion)</NuspecProperties>
+        <NuspecProperties Condition=" $(VersionSuffix) == '' ">version=$(VersionPrefix)</NuspecProperties>
+        <NuspecProperties Condition=" $(NuspecProperties) == '' ">version=$(VersionPrefix)-$(VersionSuffix)</NuspecProperties>
         <NoDefaultExcludes>true</NoDefaultExcludes>
     </PropertyGroup>
 

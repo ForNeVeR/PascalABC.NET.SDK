@@ -18,6 +18,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		LICENSE.md = LICENSE.md
 		README.md = README.md
 		global.json = global.json
+		NuGet.config = NuGet.config
+		Directory.Build.props = Directory.Build.props
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{824BE205-E976-4553-AD61-C84F84A743B7}"
@@ -28,6 +30,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.Compiler", "PascalABC.NET.Compiler\PascalABC.NET.Compiler.proj", "{E782654F-67C0-4D79-8C07-6548501C9187}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{EB5FA946-E850-46C6-A50C-EF07E5EEE47F}"
+	ProjectSection(SolutionItems) = preProject
+		scripts\build-packages.ps1 = scripts\build-packages.ps1
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
