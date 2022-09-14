@@ -3,7 +3,7 @@
     <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition=" '$(CommonTargetsPath)' == '' " />
 
     <PropertyGroup>
-        <PascalABCNETCompilerPackagePath>$(NuGetPackageRoot)$(PascalABCNETCompilerPackageName)\$(PascalABCNETCompilerPackageVersion)</PascalABCNETCompilerPackagePath>
+        <PascalABCNETCompilerPackagePath>$(NuGetPackageRoot)\$(PascalABCNETCompilerPackageName)\$(PascalABCNETCompilerPackageVersion)</PascalABCNETCompilerPackagePath>
 
         <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' and $(SkipPascalABCNETCompilerInstallation) != true ">$(PascalABCNETCompilerPackagePath)\tools\pabcnetc.exe</PascalAbcCompilerAssembly>
         <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' ">pabcnetc.exe</PascalAbcCompilerAssembly>

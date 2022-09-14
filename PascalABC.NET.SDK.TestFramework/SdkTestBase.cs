@@ -1,10 +1,12 @@
 ﻿using System.Reflection;
+using System.Xml.Linq;
+using System.Xml.XPath;
 using Medallion.Shell;
 using Xunit;
 
 namespace PascalABC.NET.SDK.TestFramework;
 
-public abstract class SdkTestBase : IDisposable
+public abstract class SdkTestBase
 {
     private readonly string _temporaryPath = Path.GetTempFileName();
 
@@ -13,12 +15,13 @@ public abstract class SdkTestBase : IDisposable
         File.Delete(_temporaryPath);
 
         var assemblyPath = Assembly.GetExecutingAssembly().Location;
-        var sourcePath = Path.Combine(Path.GetDirectoryName(assemblyPath)!, "TestData");
-        CopyDirectoryRecursive(sourcePath, _temporaryPath);
+        var testDataPath = Path.Combine(Path.GetDirectoryName(assemblyPath)!, "TestData");
+        CopyDirectoryRecursive(testDataPath, _temporaryPath);
 
-        var sdkPath = Path.GetFullPath(
-            Path.Combine(Path.GetDirectoryName(assemblyPath)!, "../../../../PascalABC.NET.SDK"));
-        CopyDirectoryRecursive(sdkPath, _temporaryPath);
+        var sourceRootPath = Path.Combine(Path.GetDirectoryName(assemblyPath)!, "../../../../");
+        var nupkgPath = Path.GetFullPath(Path.Combine(sourceRootPath, "nupkg"));
+        EmitNuGetConfig(Path.Combine(_temporaryPath, "NuGet.config"), nupkgPath);
+        EmitGlobalJson(Path.Combine(_temporaryPath, "global.json"), GetDevPackageVersion(sourceRootPath));
     }
 
     private static void CopyDirectoryRecursive(string source, string target)
@@ -38,9 +41,35 @@ public abstract class SdkTestBase : IDisposable
         }
     }
 
-    public void Dispose()
+    private static void EmitNuGetConfig(string configFilePath, string packageSourcePath)
     {
-        // Directory.Delete(TemporaryPath, recursive: true);
+        File.WriteAllText(configFilePath, $@"<configuration>
+    <config>
+        <add key=""globalPackagesFolder"" value=""packages"" />
+    </config>
+    <packageSources>
+        <add key=""local"" value=""{packageSourcePath}"" />
+    </packageSources>
+</configuration>
+");
+    }
+
+    private static string GetDevPackageVersion(string sourceRoot)
+    {
+        var sdkProjPath = Path.Combine(sourceRoot, "PascalABC.NET.SDK/PascalABC.NET.SDK.proj");
+        var document = XDocument.Load(sdkProjPath);
+        var versionElement = document.XPathSelectElement("//VersionPrefix");
+        return versionElement!.Value + "-dev";
+    }
+
+    private static void EmitGlobalJson(string globalJsonPath, string packageVersion)
+    {
+        File.WriteAllText(globalJsonPath, $@"{{
+    ""msbuild-sdks"": {{
+        ""FVNever.PascalABC.NET.SDK"" : ""{packageVersion}""
+    }}
+}}
+");
     }
 
     protected string GetTestDataPath(string relativePath) => Path.Combine(_temporaryPath, relativePath);
