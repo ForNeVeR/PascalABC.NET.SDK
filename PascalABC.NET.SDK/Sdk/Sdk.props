@@ -2,12 +2,14 @@
 
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
-    <PropertyGroup>
+    <PropertyGroup Label="CompilerVersioning">
+        <_PascalABCNETCompilerPackageVersionPrefix>3.8.3.3169</_PascalABCNETCompilerPackageVersionPrefix>
+    </PropertyGroup>
+
+    <PropertyGroup Label="Static">
         <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
 
         <PascalABCNETCompilerPackageName>FVNever.PascalABC.NET.Compiler</PascalABCNETCompilerPackageName>
-
-        <_PascalABCNETCompilerPackageVersionPrefix>3.8.3.3169</_PascalABCNETCompilerPackageVersionPrefix>
 
         <PascalABCNETCompilerPackageVersion Condition=" $(_PascalABCNETCompilerPackageVersionSuffix) != '' ">$(_PascalABCNETCompilerPackageVersionPrefix)-$(_PascalABCNETCompilerPackageVersionSuffix)</PascalABCNETCompilerPackageVersion>
         <PascalABCNETCompilerPackageVersion Condition=" $(PascalABCNETCompilerPackageVersion) == '' ">$(_PascalABCNETCompilerPackageVersionPrefix)</PascalABCNETCompilerPackageVersion>

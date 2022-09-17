@@ -1,7 +1,12 @@
 PascalABC.NET SDK [![Status Umbra][status-umbra]][andivionian-status-classifier]
-======
+=================
 
 This is an MSBuild SDK for [PascalABC.NET][pascalabc.net] programming language.
+
+NuGet
+-----
+
+`FVNever.PascalABC.NET.Compiler`: [![NuGet Package][nuget.compiler.badge]][nuget.compiler.package]
 
 Usage
 -----
@@ -67,9 +72,13 @@ Documentation
 -------------
 
 - [License (MIT)][docs.license]
+- [Maintainership][docs.maintainership]
 
+[nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
+[nuget.compiler.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler/
 [andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-umbra-
 [docs.license]: LICENSE.md
+[docs.maintainership]: MAINTAINERSHIP.md
 [dotnet.sdk]: https://dotnet.microsoft.com/en-us/download
 [pascalabc.net.downloads]: http://pascalabc.net/en/download
 [pascalabc.net]: http://pascalabc.net/en/
