@@ -21,4 +21,8 @@
         <Content Include="..\README.md" PackagePath="docs\README.md"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <PackageReference Include="ChangelogAutomation.MSBuild" Version="1.0.1" PrivateAssets="All" />
+    </ItemGroup>
+
 </Project>
