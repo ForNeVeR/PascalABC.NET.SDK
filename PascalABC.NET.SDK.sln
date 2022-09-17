@@ -27,6 +27,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{C92E99D5-8DB6-4197-A916-8B539E7D2A83}"
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\main.yml = .github\workflows\main.yml
+		.github\workflows\compiler.yml = .github\workflows\compiler.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.Compiler", "PascalABC.NET.Compiler\PascalABC.NET.Compiler.proj", "{E782654F-67C0-4D79-8C07-6548501C9187}"

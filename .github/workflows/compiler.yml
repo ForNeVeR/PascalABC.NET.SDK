@@ -1,0 +1,39 @@
+﻿name: Run Build and Unit tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  main:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_NOLOGO: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    steps:
+      - name: Fetch the sources
+        uses: actions/checkout@v2
+
+      - name: Set up .NET 6.0 SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Pack
+        shell: pwsh
+        run: dotnet pack PascalABC.NET.Compiler --output nupkg
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: compiler-package
+          path: nupkg/*.nupkg
+
+      - name: Push to NuGet
+        if: github.event_name == 'workflow_dispatch'
+        run: dotnet nuget push ./nupkg/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.COMPILER_NUGET_TOKEN }}
