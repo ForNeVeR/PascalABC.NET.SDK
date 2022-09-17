@@ -19,32 +19,25 @@ Usage
 
 ### Quick Start
 
-1. Download the SDK sources (i.e. the sources of this project).
-2. Pack the SDK package via the following shell command:
+Prepare the following project file (`.pasproj` extension is recommended):
 
-   ```console
-   $ dotnet pack PascalABC.NET.SDK --out nupkg
-   ```
-3. Make sure the `nupkg` directory is added to your project as a NuGet source.
-4. Prepare the following project file (`.pasproj` extension is recommended):
+```xml
+<Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0">
 
-   ```xml
-   <Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0">
+   <PropertyGroup>
+       <TargetFramework>net472</TargetFramework>
+   </PropertyGroup>
 
-       <PropertyGroup>
-           <TargetFramework>net472</TargetFramework>
-       </PropertyGroup>
+   <ItemGroup>
+       <MainCompile Include="Hello.pas" />
+   </ItemGroup>
 
-       <ItemGroup>
-           <MainCompile Include="Hello.pas" />
-       </ItemGroup>
+</Project>
+```
 
-   </Project>
-   ```
+where `Hello.pas` is your main Pascal module.
 
-   where `Hello.pas` is your main Pascal module.
-
-After that, `dotnet build` should build the PascalABC.NET project.
+After that, `dotnet build` should build the PascalABC.NET project; see the output in the `bin` directory.
 
 See the `PascalABC.NET.SDK.Demo` project for details.
 
@@ -73,7 +66,6 @@ To run the unit testing suite, first publish the development packages using this
 ```console
 $ pwsh ./scripts/build-packages.ps1
 ```
-
 
 To execute the tests, run the following shell command:
 
