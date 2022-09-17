@@ -5,13 +5,14 @@
         <id>FVNever.PascalABC.NET.Compiler</id>
         <version>$version$</version>
         <authors>ForNeVeR</authors>
-        <license type="expression">LGPL-3.0-only</license>
+        <license type="file">doc\License_en.txt</license>
         <projectUrl>http://pascalabc.net/</projectUrl>
         <description>The new generation Pascal programming language for .NET: a compiler package.</description>
     </metadata>
 
     <files>
         <file src="obj\PABCNETC\**\*" target="tools\"/>
+        <file src="obj\doc\**\*" target="doc\"/>
     </files>
 
 </package>

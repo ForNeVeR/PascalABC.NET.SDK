@@ -1,11 +1,12 @@
 ﻿<Project Sdk="Microsoft.Build.NoTargets">
 
-    <PropertyGroup>
-        <VersionPrefix>3.8.3.3169</VersionPrefix>
-        <CompilerHash>0EE974C1038F3AEBAED40688FC7CD287454FBCFFE71E49FB231E90F97E5120D4</CompilerHash>
+    <PropertyGroup Label="UpdateWhenMaintaining">
+        <VersionPrefix>3.8.3.3172</VersionPrefix>
+        <CompilerSha256Hash>CDFEB12860CE3C1F8BDC13564742B97BEFE46E921E05EF566EE1CB42749DFE41</CompilerSha256Hash>
+        <LicenseCommitHash>e51e9a63e859925ecc8db98934fef4d6ad42cf20</LicenseCommitHash>
     </PropertyGroup>
 
-    <PropertyGroup>
+    <PropertyGroup Label="StaticProperties">
         <TargetFramework>net6.0</TargetFramework>
         <NuspecFile>$(MSBuildThisFileDirectory)PascalABC.NET.Compiler.nuspec</NuspecFile>
         <NuspecProperties Condition=" $(VersionSuffix) == '' ">version=$(VersionPrefix)</NuspecProperties>
@@ -17,16 +18,34 @@
         <None Include="PascalABC.NET.Compiler.nuspec"/>
     </ItemGroup>
 
+    <ItemGroup>
+        <LicenseArtifact Include="License_en.txt" Sha256Hash="48D7C39855796BC00C29DCD83C75EE710A9DA5698D9B8E3C6C0A0A6419533727"/>
+        <LicenseArtifact Include="copyright.txt" Sha256Hash="876649A12222E224B372B37701BEFED2D3B38D9A024BFA1C151BB9885D93EEA7"/>
+        <LicenseArtifact Include="license.txt" Sha256Hash="093BE32D40B5A7980D836259695C5FC413797E5998969F60CC925E31B8A1CA54"/>
+    </ItemGroup>
+
     <Target Name="GetCompiler" BeforeTargets="GetCopyToPublishDirectoryItems; GenerateNuspec">
         <DownloadFile SourceUrl="http://pascalabc.net/downloads/PABCNETC.zip"
                       DestinationFolder="$(BaseIntermediateOutputPath)"
                       DestinationFileName="PABCNETC.zip"
                       SkipUnchangedFiles="true"/>
         <VerifyFileHash File="$(BaseIntermediateOutputPath)\PABCNETC.zip"
-                        Hash="$(CompilerHash)"
+                        Hash="$(CompilerSha256Hash)"
                         Algorithm="SHA256"/>
         <Unzip DestinationFolder="$(BaseIntermediateOutputPath)\PABCNETC"
                SourceFiles="$(BaseIntermediateOutputPath)\PABCNETC.zip"/>
+    </Target>
+
+    <Target Name="GetLicense" BeforeTargets="GetCopyToPublishDirectory; GenerateNuspec">
+        <DownloadFile SourceUrl="@(LicenseArtifact -> 'https://raw.githubusercontent.com/pascalabcnet/pascalabcnet/$(LicenseCommitHash)/doc/%(Identity)')"
+                      DestinationFolder="$(BaseIntermediateOutputPath)\doc\"
+                      DestinationFileName="%(Identity)"
+                      SkipUnchangedFiles="true"
+                      Condition=" '%(Identity)' != '' "/>
+        <VerifyFileHash File="@(LicenseArtifact -> '$(BaseIntermediateOutputPath)\doc\%(Identity)')"
+                        Hash="%(Sha256Hash)"
+                        Algorithm="SHA256"
+                        Condition=" '%(Identity)' != '' "/>
     </Target>
 
 </Project>
