@@ -3,12 +3,12 @@
     <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition=" '$(CommonTargetsPath)' == '' " />
 
     <PropertyGroup>
-        <PascalABCNETCompilerPackagePath>$(NuGetPackageRoot)\$(PascalABCNETCompilerPackageName)\$(PascalABCNETCompilerPackageVersion)</PascalABCNETCompilerPackagePath>
+        <_PascalABCNETCompilerPackagePath>$(NuGetPackageRoot)\$(PascalABCNETCompilerPackageName)\$(PascalABCNETCompilerPackageVersion)</_PascalABCNETCompilerPackagePath>
 
-        <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' and $(SkipPascalABCNETCompilerInstallation) != true ">$(PascalABCNETCompilerPackagePath)\tools\pabcnetc.exe</PascalAbcCompilerAssembly>
-        <PascalAbcCompilerAssembly Condition=" $(PascalAbcCompilerAssembly) == '' ">pabcnetc.exe</PascalAbcCompilerAssembly>
+        <_PascalAbcCompilerAssembly Condition=" $(_PascalAbcCompilerAssembly) == '' and $(SkipPascalABCNETCompilerInstallation) != true ">$(_PascalABCNETCompilerPackagePath)\tools\pabcnetc.exe</_PascalAbcCompilerAssembly>
+        <_PascalAbcCompilerAssembly Condition=" $(_PascalAbcCompilerAssembly) == '' ">pabcnetc.exe</_PascalAbcCompilerAssembly>
 
-        <PascalAbcCompilerCommand Condition=" $(PascalAbcCompilerCommand) == '' ">$(PascalAbcCompilerAssembly)</PascalAbcCompilerCommand>
+        <PascalAbcCompilerCommand Condition=" $(PascalAbcCompilerCommand) == '' ">$(_PascalAbcCompilerAssembly)</PascalAbcCompilerCommand>
     </PropertyGroup>
 
     <!--

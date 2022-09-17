@@ -15,33 +15,33 @@ Usage
 
 1. For now, only Windows is supported as the target platform.
 2. Download [.NET 6 SDK][dotnet.sdk] or later.
-3. Download [PascalABC.NET console compiler][pascalabc.net.downloads] (`PABCNETC.ZIP`), extract it somewhere on your disk, and add the directory to the `PATH` environment variable.
 
 ### Quick Start
 
 1. Download the SDK sources (i.e. the sources of this project).
-2. Prepare the following project file (`.pasproj`):
+2. Pack the SDK package via the following shell command:
+
+   ```console
+   $ dotnet pack PascalABC.NET.SDK --out nupkg
+   ```
+3. Make sure the `nupkg` directory is added to your project as a NuGet source.
+4. Prepare the following project file (`.pasproj` extension is recommended):
 
    ```xml
-   <Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="Current">
-
-       <Import Project="$(MSBuildThisFileDirectory)..\PascalABC.NET.SDK\Sdk\Sdk.props" />
+   <Project Sdk="FVNever.PascalABC.NET.SDK/0.0.1-dev">
 
        <PropertyGroup>
            <TargetFramework>net472</TargetFramework>
        </PropertyGroup>
 
        <ItemGroup>
-           <MainCompile Include="Hello1.pas" />
-           <MainCompile Include="Hello2.pas" />
+           <MainCompile Include="Hello.pas" />
        </ItemGroup>
-
-       <Import Project="$(MSBuildThisFileDirectory)..\PascalABC.NET.SDK\Sdk\Sdk.targets" />
 
    </Project>
    ```
 
-   where `$(MSBuildThisFileDirectory)..` is a path to the SDK base directory (the directory this `README.md` file resides).
+   where `Hello.pas` is your main Pascal module.
 
 After that, `dotnet build` should build the PascalABC.NET project.
 
@@ -55,14 +55,26 @@ Other (non-main) `.pas` files may be added as `<Compile>` items, which are only 
 
 ### Properties
 
+You can change the following properties in your project file to customize the SDK behavior.
+
 - `OutDir`: the directory for output assemblies, `$(MSBuildProjectDirectory)\bin\` by default
-- `PascalAbcCompilerAssembly`: path to the compiler assembly, `pabcnetc.exe` by default
-- `PascalAbcCompilerCommand`: command to run the compiler, `$(PascalAbcCompilerAssembly)` by default
+- `PascalABCNETCompilerPackageName`: the name of the compiler package that will be downloaded from NuGet, `FVNever.PascalABC.NET.Compiler` by default
+- `PascalABCNETCompilerPackageVersion`: the version of the compiler package to use; may be updated if a new version of the SDK is published
+- `SkipPascalABCNETCompilerInstallation`: set to `true` to skip the compiler installation by the SDK (if you want to get the compiler yourself via other means)
+
+- `PascalAbcCompilerCommand`: command to run the compiler; just the path to the packaged compiler executable by default
 
 Development
 -----------
 
-To run the unit testing suite, run the following command in your shell:
+To run the unit testing suite, first publish the development packages using this shell command ([PowerShell][powershell] is required):
+
+```console
+$ pwsh ./scripts/build-packages.ps1
+```
+
+
+To execute the tests, run the following shell command:
 
 ```console
 $ dotnet test PascalABC.NET.SDK.Tests
@@ -74,12 +86,13 @@ Documentation
 - [License (MIT)][docs.license]
 - [Maintainership][docs.maintainership]
 
-[nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
-[nuget.compiler.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler/
 [andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-umbra-
 [docs.license]: LICENSE.md
 [docs.maintainership]: MAINTAINERSHIP.md
 [dotnet.sdk]: https://dotnet.microsoft.com/en-us/download
+[nuget.compiler.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler/
+[nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
 [pascalabc.net.downloads]: http://pascalabc.net/en/download
 [pascalabc.net]: http://pascalabc.net/en/
+[powershell]: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2
 [status-umbra]: https://img.shields.io/badge/status-umbra-red.svg
