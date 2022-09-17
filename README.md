@@ -7,6 +7,7 @@ NuGet
 -----
 
 `FVNever.PascalABC.NET.Compiler`: [![NuGet Package][nuget.compiler.badge]][nuget.compiler.package]
+`FVNever.PascalABC.NET.SDK`: [![NuGet Package][nuget.sdk.badge]][nuget.sdk.package]
 
 Usage
 -----
@@ -28,7 +29,7 @@ Usage
 4. Prepare the following project file (`.pasproj` extension is recommended):
 
    ```xml
-   <Project Sdk="FVNever.PascalABC.NET.SDK/0.0.1-dev">
+   <Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0">
 
        <PropertyGroup>
            <TargetFramework>net472</TargetFramework>
@@ -83,15 +84,19 @@ $ dotnet test PascalABC.NET.SDK.Tests
 Documentation
 -------------
 
+- [Changelog][docs.changelog]
 - [License (MIT)][docs.license]
 - [Maintainership][docs.maintainership]
 
 [andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-umbra-
 [docs.license]: LICENSE.md
 [docs.maintainership]: MAINTAINERSHIP.md
+[dotnet.changelog]: CHANGELOG.md
 [dotnet.sdk]: https://dotnet.microsoft.com/en-us/download
 [nuget.compiler.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler/
 [nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
+[nuget.sdk.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.SDK/
+[nuget.sdk.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.SDK/
 [pascalabc.net.downloads]: http://pascalabc.net/en/download
 [pascalabc.net]: http://pascalabc.net/en/
 [powershell]: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2

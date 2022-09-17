@@ -10,7 +10,7 @@ on:
     - cron: '0 0 * * 0'
 
 jobs:
-  main:
+  pack:
     runs-on: ubuntu-latest
     env:
       DOTNET_NOLOGO: 1
@@ -28,7 +28,7 @@ jobs:
         shell: pwsh
         run: dotnet pack PascalABC.NET.Compiler --output nupkg
 
-      - name: Upload artifact
+      - name: Upload the artifact
         uses: actions/upload-artifact@v3
         with:
           name: compiler-package

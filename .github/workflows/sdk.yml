@@ -1,0 +1,79 @@
+﻿name: Pack the SDK
+
+on:
+  push:
+    branches: [ main ]
+    tags: [ 'v*' ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  pack:
+    runs-on: ubuntu-latest
+    env:
+      DOTNET_NOLOGO: 1
+      DOTNET_CLI_TELEMETRY_OPTOUT: 1
+    steps:
+      - name: Read version from Git ref
+        if: startsWith(github.ref, 'refs/tags/v')
+        id: version
+        shell: pwsh
+        run: Write-Output "::set-output name=version::$($env:GITHUB_REF -replace '^refs/tags/v', '')"
+
+      - name: Fetch the sources
+        uses: actions/checkout@v2
+
+      - name: Set up .NET 6.0 SDK
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '6.0.x'
+
+      - name: Pack
+        shell: pwsh
+        run: dotnet pack PascalABC.NET.SDK --output nupkg
+
+      - name: Read the changelog
+        uses: ForNeVeR/ChangelogAutomation.action@v1
+        with:
+          input: ./CHANGELOG.md
+          output: ./changelog-section.md
+
+      - name: Upload the artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sdk-package
+          path: nupkg/*.nupkg
+
+      - name: Upload the changelog
+        uses: actions/upload-artifact@v2
+        with:
+          name: changelog-section.md
+          path: ./changelog-section.md
+
+      - name: Create the release
+        if: startsWith(github.ref, 'refs/tags/v')
+        id: release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: PascalABC.NET SDK v${{ steps.version.outputs.version }}
+          body_path: ./changelog-section.md
+
+      - name: Upload the distribution to the releases page
+        if: startsWith(github.ref, 'refs/tags/v')
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.release.outputs.upload_url }}
+          asset_name: FVNever.PascalABC.NET.SDK.${{ steps.version.outputs.version }}.nupkg
+          asset_path: ./nupkg/FVNever.PascalABC.NET.SDK.${{ steps.version.outputs.version }}.nupkg
+          asset_content_type: application/zip
+
+      - name: Push to NuGet
+        if: github.event_name == 'workflow_dispatch'
+        run: dotnet nuget push ./nupkg/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.SDK_NUGET_TOKEN }}

@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.Build.NoTargets">
 
     <PropertyGroup Label="Versioning">
-        <VersionPrefix>0.0.1</VersionPrefix>
+        <VersionPrefix>1.0.0</VersionPrefix>
     </PropertyGroup>
 
     <PropertyGroup Label="Packaging">
@@ -14,8 +14,11 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <Content Include="Sdk\Sdk.props" PackagePath="Sdk\Sdk.props" />
-        <Content Include="Sdk\Sdk.targets" PackagePath="Sdk\Sdk.targets" />
+        <Content Include="Sdk\Sdk.props" PackagePath="Sdk\Sdk.props"/>
+        <Content Include="Sdk\Sdk.targets" PackagePath="Sdk\Sdk.targets"/>
+        <Content Include="..\CHANGELOG.md" PackagePath="docs\CHANGELOG.md"/>
+        <Content Include="..\LICENSE.md" PackagePath="docs\LICENSE.md"/>
+        <Content Include="..\README.md" PackagePath="docs\README.md"/>
     </ItemGroup>
 
 </Project>

@@ -21,6 +21,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		NuGet.config = NuGet.config
 		Directory.Build.props = Directory.Build.props
 		MAINTAINERSHIP.md = MAINTAINERSHIP.md
+		CHANGELOG.md = CHANGELOG.md
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{824BE205-E976-4553-AD61-C84F84A743B7}"
@@ -29,6 +30,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{
 	ProjectSection(SolutionItems) = preProject
 		.github\workflows\main.yml = .github\workflows\main.yml
 		.github\workflows\compiler.yml = .github\workflows\compiler.yml
+		.github\workflows\sdk.yml = .github\workflows\sdk.yml
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.Compiler", "PascalABC.NET.Compiler\PascalABC.NET.Compiler.proj", "{E782654F-67C0-4D79-8C07-6548501C9187}"

@@ -14,3 +14,18 @@ Publishing the Compiler Package
 
 [actions.compiler]: https://github.com/ForNeVeR/PascalABC.NET.SDK/actions/workflows/compiler.yml
 [license]: https://github.com/pascalabcnet/pascalabcnet/tree/HEAD/doc
+
+Publishing the SDK Package
+--------------------------
+
+1. Update the copyright year in the `LICENSE.md`, if required.
+2. Choose a new version according to [Semantic Versioning][semver].
+3. Update the package version in the following places:
+    - `PascalABC.NET.SDK/PascalABC.NET.SDK.proj` (the `VersionPrefix` element)
+    - `README.md` (the example section, look for `Sdk=`)
+    - `PascalABC.NET.SDK.Demo/PascalABC.NET.SDK.Demo.pasproj` (line 1)
+4. Make sure there's a properly formed version entry in the `CHANGELOG.md` (often it can be created by renaming the **Unreleased** section).
+5. Merge the changes to the `main` branch via a pull request.
+6. Push a tag named `v<VERSION>` to GitHub.
+
+[semver]: https://semver.org/spec/v2.0.0.html
