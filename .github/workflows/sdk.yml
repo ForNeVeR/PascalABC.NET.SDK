@@ -75,5 +75,5 @@ jobs:
           asset_content_type: application/zip
 
       - name: Push to NuGet
-        if: github.event_name == 'workflow_dispatch'
+        if: startsWith(github.ref, 'refs/tags/v')
         run: dotnet nuget push ./nupkg/*.nupkg --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.SDK_NUGET_TOKEN }}
