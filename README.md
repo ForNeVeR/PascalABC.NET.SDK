@@ -1,4 +1,4 @@
-PascalABC.NET SDK [![Status Umbra][status-umbra]][andivionian-status-classifier]
+PascalABC.NET SDK [![Status Enfer][status-enfer]][andivionian-status-classifier]
 =================
 
 This is an MSBuild SDK for [PascalABC.NET][pascalabc.net] programming language.
@@ -80,7 +80,7 @@ Documentation
 - [License (MIT)][docs.license]
 - [Maintainership][docs.maintainership]
 
-[andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-umbra-
+[andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-enfer-
 [docs.license]: LICENSE.md
 [docs.maintainership]: MAINTAINERSHIP.md
 [dotnet.changelog]: CHANGELOG.md
@@ -92,4 +92,4 @@ Documentation
 [pascalabc.net.downloads]: http://pascalabc.net/en/download
 [pascalabc.net]: http://pascalabc.net/en/
 [powershell]: https://learn.microsoft.com/en-us/powershell/scripting/install/installing-powershell?view=powershell-7.2
-[status-umbra]: https://img.shields.io/badge/status-umbra-red.svg
+[status-enfer]: https://img.shields.io/badge/status-enfer-orange.svg
