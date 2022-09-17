@@ -76,13 +76,7 @@ public abstract class SdkTestBase
 
     private async Task<CommandResult> BuildProject(string projectFilePath)
     {
-        var compilerPath = await Artifacts.GetPascalAbcNetDirectory();
-        var command = Command.Run(
-            "dotnet",
-            new[] { "build", "--verbosity:normal", projectFilePath },
-            opts => opts.EnvironmentVariable(
-                "PATH",
-                Environment.GetEnvironmentVariable("PATH") + Path.PathSeparator + compilerPath));
+        var command = Command.Run("dotnet",  "build", "--verbosity:normal", projectFilePath);
         return await command.Task;
     }
 
