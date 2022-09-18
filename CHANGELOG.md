@@ -14,6 +14,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 ### Added
 - New `DebugMode` property is supported and set by default for the `Debug` configuration. Before that, the debug mode was always enabled.
 - [Common MSBuild properties](https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2022) are now supported.
+- Assembly references support (`<Reference>`, `<PackageReference>`, `<ProjectReference>`).
 
 ## [1.0.0] - 2022-09-17
 This is the initial release of the SDK. It allows invoking the compiler to build simple PascalABC.NET programs.
