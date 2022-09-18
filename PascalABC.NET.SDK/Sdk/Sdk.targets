@@ -14,7 +14,7 @@
 
         <PascalAbcCompilerCommand Condition=" $(PascalAbcCompilerCommand) == '' ">$(_PascalAbcCompilerAssembly)</PascalAbcCompilerCommand>
 
-        <_PascalAbcCompilerArguments Condition=" $(DebugMode) == 'true' ">$(PascalAbcCompilerArguments) /Debug:1</_PascalAbcCompilerArguments>
+        <_PascalAbcCompilerArguments Condition=" $(DebugMode) == 'true' ">$(_PascalAbcCompilerArguments) /Debug:1</_PascalAbcCompilerArguments>
     </PropertyGroup>
 
     <ItemGroup>
