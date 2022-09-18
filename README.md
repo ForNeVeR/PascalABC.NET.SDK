@@ -86,7 +86,7 @@ Documentation
 [andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-enfer-
 [docs.license]: LICENSE.md
 [docs.maintainership]: MAINTAINERSHIP.md
-[dotnet.changelog]: CHANGELOG.md
+[docs.changelog]: CHANGELOG.md
 [dotnet.sdk]: https://dotnet.microsoft.com/en-us/download
 [nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
 [nuget.sdk.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.SDK/
