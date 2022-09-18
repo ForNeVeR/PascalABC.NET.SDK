@@ -29,4 +29,8 @@
         <None Include="TestData\**\*" CopyToOutputDirectory="Always" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="TestData\MultiProjectSolution" />
+    </ItemGroup>
+
 </Project>

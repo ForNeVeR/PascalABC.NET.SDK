@@ -17,14 +17,29 @@
         <_PascalAbcCompilerAssembly Condition=" $(_PascalAbcCompilerAssembly) == '' and $(SkipPascalABCNETCompilerInstallation) != true ">$(_PascalABCNETCompilerPackagePath)\tools\pabcnetcclear.exe</_PascalAbcCompilerAssembly>
         <_PascalAbcCompilerAssembly Condition=" $(_PascalAbcCompilerAssembly) == '' ">pabcnetcclear.exe</_PascalAbcCompilerAssembly>
 
+        <_GeneratedReferenceFilePath Condition=" $(SkipGenerateReferenceFile) != 'true' ">$(IntermediateOutputPath)\References_Generated.pas</_GeneratedReferenceFilePath>
+
+        <_GeneratedReferenceFileDirectory Condition=" $(SkipGenerateReferenceFile) != 'true' ">$([System.IO.Path]::GetDirectoryName('$(_GeneratedReferenceFilePath)'))</_GeneratedReferenceFileDirectory>
+
         <PascalAbcCompilerCommand Condition=" $(PascalAbcCompilerCommand) == '' ">$(_PascalAbcCompilerAssembly)</PascalAbcCompilerCommand>
 
         <_PascalAbcCompilerArguments Condition=" $(DebugMode) == 'true' ">$(_PascalAbcCompilerArguments) /Debug:1</_PascalAbcCompilerArguments>
+        <_PascalAbcCompilerArguments Condition=" $(SkipGenerateReferenceFile) != 'true' ">$(_PascalAbcCompilerArguments) "/SearchDir:$(_GeneratedReferenceFileDirectory)"</_PascalAbcCompilerArguments>
     </PropertyGroup>
+
+    <Target Name="GenerateReferenceFile" Inputs="@(ReferencePath)" Outputs="$(_GeneratedReferenceFilePath)"
+            BeforeTargets="Compile">
+        <ItemGroup>
+            <_ReferenceFileLines Include="@(ReferencePath -> '{$reference %(FullPath)}')"/>
+            <_ReferenceFileLines Include="unit $([System.IO.Path]::GetFileNameWithoutExtension('$(_GeneratedReferenceFilePath)'))%3b"/>
+            <_ReferenceFileLines Include="end."/>
+        </ItemGroup>
+        <WriteLinesToFile File="$(_GeneratedReferenceFilePath)" Lines="@(_ReferenceFileLines)" Overwrite="true" WriteOnlyWhenDifferent="true"/>
+    </Target>
 
     <Target Name="MainCompileCheck" BeforeTargets="Compile">
         <Error Condition=" @(MainCompile->Count()) > 1 "
-               Text="Only one main compile item is supported. Currently, there are multiple: @(MainCompile, ', ')." />
+               Text="Only one main compile item is supported. Currently, there are multiple: @(MainCompile, ', ')."/>
     </Target>
 
     <Target Name="Compile" BeforeTargets="Build"

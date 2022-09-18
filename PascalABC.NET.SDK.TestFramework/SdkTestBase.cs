@@ -80,7 +80,7 @@ public abstract class SdkTestBase
         return await command.Task;
     }
 
-    protected async Task TestSuccess(string projectFileRelativePath, params string[] outputFileRelativePaths)
+    protected async Task TestSuccess(string projOrSlnFileRelativePath, params string[] outputFileRelativePaths)
     {
         foreach (var outputFileRelativePath in outputFileRelativePaths)
         {
@@ -88,7 +88,7 @@ public abstract class SdkTestBase
             if (File.Exists(outputFilePath)) throw new Exception($"File \"{outputFilePath}\" should not exist.");
         }
 
-        var projectFilePath = GetTestDataPath(projectFileRelativePath);
+        var projectFilePath = GetTestDataPath(projOrSlnFileRelativePath);
         var result = await BuildProject(projectFilePath);
 
         Assert.True(result.Success, "Build should succeed. Stdout: " + result.StandardOutput);
@@ -99,9 +99,9 @@ public abstract class SdkTestBase
         }
     }
 
-    protected async Task TestFailure(string projectFileRelativePath, string errorMessage)
+    protected async Task TestFailure(string projOrSlnFileRelativePath, string errorMessage)
     {
-        var projectFilePath = GetTestDataPath(projectFileRelativePath);
+        var projectFilePath = GetTestDataPath(projOrSlnFileRelativePath);
         if (!File.Exists(projectFilePath)) throw new Exception($"File \"{projectFilePath}\" doesn't exists.");
         var result = await BuildProject(projectFilePath);
         Assert.False(result.Success, "Build should be failed. Stdout: " + result.StandardOutput);

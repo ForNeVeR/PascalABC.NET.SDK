@@ -49,6 +49,10 @@ In a project, there should be exactly one `<MainCompile>` item, which will be th
 
 Other (non-main) `.pas` files may be added as `<Compile>` items, which are only used to track incremental compilation dependencies.
 
+### References
+
+All the assembly references are resolved during build and written to a generated module `References_Generated` by default. This means that your main module should add `uses References_Generated` to access the referenced assemblies.
+
 ### Properties
 
 You can change the following properties in your project file to customize the SDK behavior.
@@ -61,6 +65,7 @@ You can change the following properties in your project file to customize the SD
 <!-- Sdk.targets -->
 - `DebugMode`: if `true`, then the compiler will generate debug information and disable the optimizations. Enabled by default for the `Debug` configuration.
 - `PascalAbcCompilerCommand`: command to run the compiler; just the path to the packaged compiler executable by default.
+- `SkipGenerateReferenceFile`: if you don't want the SDK to generate the reference module.
 
 [Common MSBuild properties][msbuild.common-properties] are supported as well.
 

@@ -1,0 +1,13 @@
+<Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0-dev">
+
+    <PropertyGroup>
+        <TargetFramework>net472</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="../CSharpProject/CSharpProject.csproj" />
+        <Reference Include="System.Windows.Forms" />
+        <MainCompile Include="Hello.pas" />
+    </ItemGroup>
+
+</Project>
