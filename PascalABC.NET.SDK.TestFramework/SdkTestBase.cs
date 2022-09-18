@@ -72,22 +72,12 @@ public abstract class SdkTestBase
 ");
     }
 
-    protected string GetTestDataPath(string relativePath) => Path.Combine(_temporaryPath, relativePath);
+    private string GetTestDataPath(string relativePath) => Path.Combine(_temporaryPath, relativePath);
 
     private async Task<CommandResult> BuildProject(string projectFilePath)
     {
         var command = Command.Run("dotnet",  "build", "--verbosity:normal", projectFilePath);
         return await command.Task;
-    }
-
-    protected async Task TestFailure(string projectFileRelativePath, string errorMessage)
-    {
-        var projectFilePath = GetTestDataPath(projectFileRelativePath);
-        if (!File.Exists(projectFilePath)) throw new Exception($"File \"{projectFilePath}\" doesn't exists.");
-        var result = await BuildProject(projectFilePath);
-        Assert.False(result.Success, "Build should be failed. Stdout: " + result.StandardOutput);
-
-        Assert.Contains(errorMessage, result.StandardOutput);
     }
 
     protected async Task TestSuccess(string projectFileRelativePath, params string[] outputFileRelativePaths)
