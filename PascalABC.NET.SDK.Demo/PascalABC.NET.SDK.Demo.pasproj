@@ -5,8 +5,7 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <MainCompile Include="Hello1.pas" />
-        <MainCompile Include="Hello2.pas" />
+        <MainCompile Include="Hello.pas" />
     </ItemGroup>
 
     <ItemGroup>

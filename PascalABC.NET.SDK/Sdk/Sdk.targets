@@ -1,6 +1,11 @@
 ﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition=" '$(CommonTargetsPath)' == '' " />
+    <Import Project="Sdk.targets" Sdk="Microsoft.NET.Sdk" Condition=" '$(CommonTargetsPath)' == '' "/>
+
+    <PropertyGroup Label="SdkCustomization">
+        <!-- PascalABC.NET compiler handles the resources itself, so there's no need in SDK targets for this. -->
+        <PrepareResourceNamesDependsOn/>
+    </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
         <DebugMode Condition=" '$(DebugMode)' == '' ">true</DebugMode>
@@ -17,19 +22,21 @@
         <_PascalAbcCompilerArguments Condition=" $(DebugMode) == 'true' ">$(_PascalAbcCompilerArguments) /Debug:1</_PascalAbcCompilerArguments>
     </PropertyGroup>
 
-    <ItemGroup>
-        <_PascalAbcCompilerOutput Include="@(MainCompile -> '$(OutDir)\%(FileName).exe')" />
-        <_PascalAbcCompilerOutput Include="@(MainCompile -> '$(OutDir)\%(FileName).pdb')" Condition=" $(DebugMode) == 'true' " />
-    </ItemGroup>
+    <Target Name="MainCompileCheck" BeforeTargets="Compile">
+        <Error Condition=" @(MainCompile->Count()) > 1 "
+               Text="Only one main compile item is supported. Currently, there are multiple: @(MainCompile, ', ')." />
+    </Target>
 
     <Target Name="Compile" BeforeTargets="Build"
             Inputs="@(Compile);@(MainCompile)"
-            Outputs="@(_PascalAbcCompilerOutput)">
-        <MakeDir Directories="$(OutDir)" />
-        <Exec Command="@(MainCompile -> '$(PascalAbcCompilerCommand) $(_PascalAbcCompilerArguments) &quot;/Output:$(OutDir)\%(FileName).exe&quot; %(FullPath)')"
-              Condition=" '%(Identity)' != ''" />
-    </Target>
+            Outputs="@(IntermediateAssembly)">
 
-    <Target Name="Build" />
+        <PropertyGroup>
+            <_CompilerOutput>@(IntermediateAssembly->'%(FullPath)')</_CompilerOutput>
+        </PropertyGroup>
+
+        <Exec Command="@(MainCompile -> '$(PascalAbcCompilerCommand) $(_PascalAbcCompilerArguments) &quot;/Output:$(_CompilerOutput)&quot; %(FullPath)')"
+              Condition=" '%(Identity)' != ''"/>
+    </Target>
 
 </Project>

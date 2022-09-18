@@ -19,7 +19,7 @@ Usage
 
 ### Quick Start
 
-Prepare the following project file (`.pasproj` extension is recommended):
+Prepare the following project file, `MyProject.pasproj`:
 
 ```xml
 <Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0">
@@ -39,11 +39,13 @@ where `Hello.pas` is your main Pascal module.
 
 After that, `dotnet build` should build the PascalABC.NET project; see the output in the `bin` directory.
 
+`dotnet run` may be used to run the project.
+
 See the `PascalABC.NET.SDK.Demo` project for details.
 
 ### Items
 
-Every `<MainCompile>` item produces a separate assembly.
+In a project, there should be exactly one `<MainCompile>` item, which will be the main module passed to the compiler.
 
 Other (non-main) `.pas` files may be added as `<Compile>` items, which are only used to track incremental compilation dependencies.
 
@@ -52,7 +54,6 @@ Other (non-main) `.pas` files may be added as `<Compile>` items, which are only 
 You can change the following properties in your project file to customize the SDK behavior.
 
 <!-- Sdk.props -->
-- `OutDir`: the directory for output assemblies, `$(MSBuildProjectDirectory)\bin\` by default
 - `PascalABCNETCompilerPackageName`: the name of the compiler package that will be downloaded from NuGet, `FVNever.PascalABC.NET.Compiler` by default.
 - `PascalABCNETCompilerPackageVersion`: the version of the compiler package to use; may be updated if a new version of the SDK is published.
 - `SkipPascalABCNETCompilerInstallation`: set to `true` to skip the compiler installation by the SDK (if you want to get the compiler yourself via other means).
@@ -60,6 +61,8 @@ You can change the following properties in your project file to customize the SD
 <!-- Sdk.targets -->
 - `DebugMode`: if `true`, then the compiler will generate debug information and disable the optimizations. Enabled by default for the `Debug` configuration.
 - `PascalAbcCompilerCommand`: command to run the compiler; just the path to the packaged compiler executable by default.
+
+[Common MSBuild properties][msbuild.common-properties] are supported as well.
 
 Development
 -----------
@@ -84,10 +87,11 @@ Documentation
 - [Maintainership][docs.maintainership]
 
 [andivionian-status-classifier]: https://github.com/ForNeVeR/andivionian-status-classifier#status-enfer-
+[docs.changelog]: CHANGELOG.md
 [docs.license]: LICENSE.md
 [docs.maintainership]: MAINTAINERSHIP.md
-[docs.changelog]: CHANGELOG.md
 [dotnet.sdk]: https://dotnet.microsoft.com/en-us/download
+[msbuild.common-properties]: https://learn.microsoft.com/en-us/visualstudio/msbuild/common-msbuild-project-properties?view=vs-2022
 [nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
 [nuget.sdk.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.SDK/
 [pascalabc.net.downloads]: http://pascalabc.net/en/download

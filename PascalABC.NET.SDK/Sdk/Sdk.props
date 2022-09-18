@@ -2,6 +2,7 @@
 
     <PropertyGroup Label="SdkCustomization">
         <EnableDefaultItems>false</EnableDefaultItems>
+        <OutputType>Exe</OutputType>
     </PropertyGroup>
 
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
@@ -11,8 +12,6 @@
     </PropertyGroup>
 
     <PropertyGroup Label="Static">
-        <OutDir>$(MSBuildProjectDirectory)\bin\</OutDir>
-
         <PascalABCNETCompilerPackageName>FVNever.PascalABC.NET.Compiler</PascalABCNETCompilerPackageName>
 
         <PascalABCNETCompilerPackageVersion Condition=" $(_PascalABCNETCompilerPackageVersionSuffix) != '' ">$(_PascalABCNETCompilerPackageVersionPrefix)-$(_PascalABCNETCompilerPackageVersionSuffix)</PascalABCNETCompilerPackageVersion>

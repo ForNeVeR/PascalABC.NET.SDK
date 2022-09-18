@@ -98,4 +98,14 @@ public abstract class SdkTestBase
             Assert.True(File.Exists(outputFilePath), $"File \"{outputFilePath}\" should exist.");
         }
     }
+
+    protected async Task TestFailure(string projectFileRelativePath, string errorMessage)
+    {
+        var projectFilePath = GetTestDataPath(projectFileRelativePath);
+        if (!File.Exists(projectFilePath)) throw new Exception($"File \"{projectFilePath}\" doesn't exists.");
+        var result = await BuildProject(projectFilePath);
+        Assert.False(result.Success, "Build should be failed. Stdout: " + result.StandardOutput);
+
+        Assert.Contains(errorMessage, result.StandardOutput);
+    }
 }
