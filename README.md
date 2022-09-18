@@ -51,12 +51,15 @@ Other (non-main) `.pas` files may be added as `<Compile>` items, which are only 
 
 You can change the following properties in your project file to customize the SDK behavior.
 
+<!-- Sdk.props -->
 - `OutDir`: the directory for output assemblies, `$(MSBuildProjectDirectory)\bin\` by default
-- `PascalABCNETCompilerPackageName`: the name of the compiler package that will be downloaded from NuGet, `FVNever.PascalABC.NET.Compiler` by default
-- `PascalABCNETCompilerPackageVersion`: the version of the compiler package to use; may be updated if a new version of the SDK is published
-- `SkipPascalABCNETCompilerInstallation`: set to `true` to skip the compiler installation by the SDK (if you want to get the compiler yourself via other means)
+- `PascalABCNETCompilerPackageName`: the name of the compiler package that will be downloaded from NuGet, `FVNever.PascalABC.NET.Compiler` by default.
+- `PascalABCNETCompilerPackageVersion`: the version of the compiler package to use; may be updated if a new version of the SDK is published.
+- `SkipPascalABCNETCompilerInstallation`: set to `true` to skip the compiler installation by the SDK (if you want to get the compiler yourself via other means).
 
-- `PascalAbcCompilerCommand`: command to run the compiler; just the path to the packaged compiler executable by default
+<!-- Sdk.targets -->
+- `DebugMode`: if `true`, then the compiler will generate debug information and disable the optimizations. Enabled by default for the `Debug` configuration.
+- `PascalAbcCompilerCommand`: command to run the compiler; just the path to the packaged compiler executable by default.
 
 Development
 -----------
