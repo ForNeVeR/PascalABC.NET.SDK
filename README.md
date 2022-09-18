@@ -35,7 +35,14 @@ Prepare the following project file, `MyProject.pasproj`:
 </Project>
 ```
 
-where `Hello.pas` is your main Pascal module.
+where `Hello.pas` is your main Pascal module, for example:
+
+```pas
+uses References_Generated; // to use SDK-generated assembly references
+begin
+    writeln('Hello, world!');
+end.
+```
 
 After that, `dotnet build` should build the PascalABC.NET project; see the output in the `bin` directory.
 
