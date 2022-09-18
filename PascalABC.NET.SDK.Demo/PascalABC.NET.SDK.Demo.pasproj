@@ -9,4 +9,8 @@
         <MainCompile Include="Hello2.pas" />
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="FullRebuild.ps1" />
+    </ItemGroup>
+
 </Project>
