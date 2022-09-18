@@ -6,8 +6,8 @@ This is an MSBuild SDK for [PascalABC.NET][pascalabc.net] programming language.
 NuGet
 -----
 
-- `FVNever.PascalABC.NET.Compiler`: [<img valign="middle" src="https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler">][nuget.compiler.package]
-- `FVNever.PascalABC.NET.SDK`: [<img valign="middle" src="https://img.shields.io/nuget/v/FVNever.PascalABC.NET.SDK">][nuget.sdk.package]
+- `FVNever.PascalABC.NET.Compiler`: [<img valign="middle" src="https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler" alt="NuGet package version badge">][nuget.compiler.package]
+- `FVNever.PascalABC.NET.SDK`: [<img valign="middle" src="https://img.shields.io/nuget/v/FVNever.PascalABC.NET.SDK" alt="NuGet package version badge">][nuget.sdk.package]
 
 Usage
 -----
@@ -85,9 +85,7 @@ Documentation
 [docs.maintainership]: MAINTAINERSHIP.md
 [dotnet.changelog]: CHANGELOG.md
 [dotnet.sdk]: https://dotnet.microsoft.com/en-us/download
-[nuget.compiler.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.Compiler
 [nuget.compiler.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.Compiler/
-[nuget.sdk.badge]: https://img.shields.io/nuget/v/FVNever.PascalABC.NET.SDK
 [nuget.sdk.package]: https://www.nuget.org/packages/FVNever.PascalABC.NET.SDK/
 [pascalabc.net.downloads]: http://pascalabc.net/en/download
 [pascalabc.net]: http://pascalabc.net/en/
