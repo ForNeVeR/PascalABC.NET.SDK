@@ -1,4 +1,4 @@
-<Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0-dev">
+<Project Sdk="FVNever.PascalABC.NET.SDK">
 
     <PropertyGroup>
         <TargetFramework>net472</TargetFramework>
