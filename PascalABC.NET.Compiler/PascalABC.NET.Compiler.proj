@@ -1,8 +1,8 @@
 ﻿<Project Sdk="Microsoft.Build.NoTargets">
 
     <PropertyGroup Label="Versioning">
-        <VersionPrefix>3.8.3.3172</VersionPrefix>
-        <CompilerSha256Hash>CDFEB12860CE3C1F8BDC13564742B97BEFE46E921E05EF566EE1CB42749DFE41</CompilerSha256Hash>
+        <VersionPrefix>3.8.3.3177</VersionPrefix>
+        <CompilerSha256Hash>919311FE8C8A3167E1910CFE073017A4A0523BB546CD0AAC17AFF1715F557CEA</CompilerSha256Hash>
         <LicenseCommitHash>e51e9a63e859925ecc8db98934fef4d6ad42cf20</LicenseCommitHash>
     </PropertyGroup>
 
