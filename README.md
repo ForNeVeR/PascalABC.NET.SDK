@@ -22,7 +22,7 @@ Usage
 Prepare the following project file, `MyProject.pasproj`:
 
 ```xml
-<Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0">
+<Project Sdk="FVNever.PascalABC.NET.SDK/2.0.0">
 
    <PropertyGroup>
        <TargetFramework>net472</TargetFramework>
