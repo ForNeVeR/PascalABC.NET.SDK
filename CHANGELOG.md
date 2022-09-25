@@ -10,6 +10,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 - The `pabcnetcclear.exe` binary is now used for compilation, since it's more suited for command-line invocation.
 - Multiple `<MainCompile>` items are no longer supported in one project.
 - The default output assembly path is now in line with MSBuild SDK standards (`bin/<Configuration>/<TargetFramework>/<ProjectName>.exe`).
+- A version 3.8.3.3178-preview.1 of the compiler is now used by default. It was published from a fork of the official repository, with better support for NuGet.
 
 ### Added
 - New `DebugMode` property is supported and set by default for the `Debug` configuration. Before that, the debug mode was always enabled.

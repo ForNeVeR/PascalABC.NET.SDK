@@ -8,6 +8,7 @@
         <license type="file">doc\License_en.txt</license>
         <projectUrl>http://pascalabc.net/</projectUrl>
         <description>Binary files of the official compiler for the PascalABC.NET programming language.</description>
+        <releaseNotes>The same as the official 3.8.3.3177, but with PR #2720 (https://github.com/pascalabcnet/pascalabcnet/pull/2720) incorporated.</releaseNotes> <!-- TODO[#18]: Remove this line -->
     </metadata>
 
     <files>

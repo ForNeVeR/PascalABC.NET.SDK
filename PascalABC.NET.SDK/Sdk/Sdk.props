@@ -9,7 +9,7 @@
 
     <PropertyGroup Label="CompilerVersioning">
         <_PascalABCNETCompilerPackageVersionPrefix>3.8.3.3178</_PascalABCNETCompilerPackageVersionPrefix>
-        <_PascalABCNETCompilerPackageVersionSuffix Condition=" $(_PascalABCNETCompilerPackageVersionSuffix) == '' ">preview.1</_PascalABCNETCompilerPackageVersionSuffix> <!-- TODO[#xxx]: Remove this line -->
+        <_PascalABCNETCompilerPackageVersionSuffix Condition=" $(_PascalABCNETCompilerPackageVersionSuffix) == '' ">preview.1</_PascalABCNETCompilerPackageVersionSuffix> <!-- TODO[#18]: Remove this line -->
     </PropertyGroup>
 
     <PropertyGroup Label="Static">

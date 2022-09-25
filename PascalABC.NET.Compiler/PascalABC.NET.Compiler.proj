@@ -15,7 +15,7 @@
     <PropertyGroup Label="StaticProperties">
         <TargetFramework>net6.0</TargetFramework>
         <NuspecFile>$(MSBuildThisFileDirectory)PascalABC.NET.Compiler.nuspec</NuspecFile>
-        <NuspecProperties Condition=" $(VersionSuffix) == '' ">version=$(VersionPrefix)-preview.1</NuspecProperties> <!-- TODO[#xxx]: Remove the suffix -->
+        <NuspecProperties Condition=" $(VersionSuffix) == '' ">version=$(VersionPrefix)-preview.1</NuspecProperties> <!-- TODO[#18]: Remove the suffix -->
         <NuspecProperties Condition=" $(NuspecProperties) == '' ">version=$(VersionPrefix)-$(VersionSuffix)</NuspecProperties>
         <NoDefaultExcludes>true</NoDefaultExcludes>
     </PropertyGroup>
