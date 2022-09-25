@@ -8,7 +8,7 @@
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
     <PropertyGroup Label="CompilerVersioning">
-        <_PascalABCNETCompilerPackageVersionPrefix>3.8.3.3172</_PascalABCNETCompilerPackageVersionPrefix>
+        <_PascalABCNETCompilerPackageVersionPrefix>3.8.3.3177</_PascalABCNETCompilerPackageVersionPrefix>
     </PropertyGroup>
 
     <PropertyGroup Label="Static">
