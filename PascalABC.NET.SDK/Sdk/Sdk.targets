@@ -27,8 +27,7 @@
         <_PascalAbcCompilerArguments Condition=" $(SkipGenerateReferenceFile) != 'true' ">$(_PascalAbcCompilerArguments) "/SearchDir:$(_GeneratedReferenceFileDirectory)"</_PascalAbcCompilerArguments>
     </PropertyGroup>
 
-    <Target Name="GenerateReferenceFile" Inputs="@(ReferencePath)" Outputs="$(_GeneratedReferenceFilePath)"
-            BeforeTargets="Compile">
+    <Target Name="GenerateReferenceFile" BeforeTargets="Compile">
         <ItemGroup>
             <_ReferenceFileLines Include="@(ReferencePath -> '{$reference %(FullPath)}')"/>
             <_ReferenceFileLines Include="unit $([System.IO.Path]::GetFileNameWithoutExtension('$(_GeneratedReferenceFilePath)'))%3b"/>
