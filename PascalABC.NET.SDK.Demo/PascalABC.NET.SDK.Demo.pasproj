@@ -1,6 +1,7 @@
 <Project Sdk="FVNever.PascalABC.NET.SDK/1.0.0-dev">
 
     <PropertyGroup>
+        <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
         <TargetFramework>net472</TargetFramework>
     </PropertyGroup>
 
