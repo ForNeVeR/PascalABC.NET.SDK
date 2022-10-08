@@ -1,7 +1,7 @@
 using PascalABC.NET.SDK.TestFramework;
 using Xunit;
 
-namespace PascalABC.NET.SDK.Tests;
+namespace PascalABC.NET.SDK.IntegrationTests;
 
 public class SimpleCompilationTests : SdkTestBase
 {

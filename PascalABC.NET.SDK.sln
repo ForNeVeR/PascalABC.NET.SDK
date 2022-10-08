@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30114.105
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK", "PascalABC.NET.SDK\PascalABC.NET.SDK.proj", "{A6F3861E-A99B-4355-87BD-4A2EBE71625A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK", "PascalABC.NET.SDK\PascalABC.NET.SDK.csproj", "{A6F3861E-A99B-4355-87BD-4A2EBE71625A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.Tests", "PascalABC.NET.SDK.Tests\PascalABC.NET.SDK.Tests.csproj", "{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.IntegrationTests", "PascalABC.NET.SDK.IntegrationTests\PascalABC.NET.SDK.IntegrationTests.csproj", "{3D5863E9-4236-4872-AEE3-5D4314E5DE4A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.TestFramework", "PascalABC.NET.SDK.TestFramework\PascalABC.NET.SDK.TestFramework.csproj", "{848A5D5C-C2F0-4D21-A30D-220CA2A83915}"
 EndProject
@@ -40,6 +40,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "scripts", "scripts", "{EB5F
 		scripts\build-packages.ps1 = scripts\build-packages.ps1
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PascalABC.NET.SDK.UnitTests", "PascalABC.NET.SDK.UnitTests\PascalABC.NET.SDK.UnitTests.csproj", "{AFF4F648-ADE0-49EE-98AD-6324D10008D0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -65,6 +67,14 @@ Global
 		{E782654F-67C0-4D79-8C07-6548501C9187}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E782654F-67C0-4D79-8C07-6548501C9187}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E782654F-67C0-4D79-8C07-6548501C9187}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6F3861E-A99B-4355-87BD-4A2EBE71625A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6F3861E-A99B-4355-87BD-4A2EBE71625A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6F3861E-A99B-4355-87BD-4A2EBE71625A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6F3861E-A99B-4355-87BD-4A2EBE71625A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFF4F648-ADE0-49EE-98AD-6324D10008D0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFF4F648-ADE0-49EE-98AD-6324D10008D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFF4F648-ADE0-49EE-98AD-6324D10008D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFF4F648-ADE0-49EE-98AD-6324D10008D0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{C92E99D5-8DB6-4197-A916-8B539E7D2A83} = {824BE205-E976-4553-AD61-C84F84A743B7}

@@ -41,5 +41,8 @@ jobs:
       - name: Build the project
         run: dotnet build
 
-      - name: Test
-        run: dotnet test PascalABC.NET.SDK.Tests
+      - name: Unit tests
+        run: dotnet test PascalABC.NET.SDK.UnitTests
+
+      - name: Integration tests
+        run: dotnet test PascalABC.NET.SDK.IntegrationTests

@@ -85,10 +85,11 @@ Before opening the solution or running the unit testing suite, first publish the
 $ pwsh ./scripts/build-packages.ps1
 ```
 
-To execute the tests, run the following shell command:
+To execute the tests, run the following shell commands:
 
 ```console
-$ dotnet test PascalABC.NET.SDK.Tests
+$ dotnet test PascalABC.NET.UnitTests
+$ dotnet test PascalABC.NET.IntegrationTests
 ```
 
 Documentation

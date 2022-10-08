@@ -27,9 +27,25 @@
         <_PascalAbcCompilerArguments Condition=" $(SkipGenerateReferenceFile) != 'true' ">$(_PascalAbcCompilerArguments) "/SearchDir:$(_GeneratedReferenceFileDirectory)"</_PascalAbcCompilerArguments>
     </PropertyGroup>
 
-    <Target Name="GenerateReferenceFile" BeforeTargets="Compile" DependsOnTargets="ResolveAssemblyReferences">
+    <Target Name="GenerateReferenceFile" BeforeTargets="Compile"
+            DependsOnTargets="ResolvePackageAssets; ResolveAssemblyReferences">
+        <!--
+            ResolveAssemblyReferences gives us ReferencePath items, which include ref assemblies for some packages (e.g.
+            System.Memory 4.5.1). PascalABC.NET compiler cannot load those.
+
+            Because of that, we also need to depend on ResolvePackageAssets, which gives us RuntimeCopyLocalItems and
+            ResolvedCompileFileDefinitions. RuntimeCopyLocalItems contains normal assemblies, while
+            ResolvedCompileFileDefinitions contains reference ones. Both of these items have their NuGetPackageId, which
+            allows us to find a normal assembly corresponding to a reference one, and replace them in ReferencePath.
+        -->
+        <ResolvePascalReferenceAssemblies ReferencePaths="@(ReferencePath)"
+                                          RuntimeCopyLocalItems="@(RuntimeCopyLocalItems)"
+                                          ResolvedCompileFileDefinitions="@(ResolvedCompileFileDefinitions)">
+            <Output TaskParameter="ResolvedReferences" ItemName="_PascalReferencePath"/>
+        </ResolvePascalReferenceAssemblies>
+
         <ItemGroup>
-            <_ReferenceFileLines Include="@(ReferenceCopyLocalPaths -> '{$reference %(FullPath)}')"/>
+            <_ReferenceFileLines Include="@(_PascalReferencePath -> '{$reference %(FullPath)}')"/>
             <_ReferenceFileLines Include="unit $([System.IO.Path]::GetFileNameWithoutExtension('$(_GeneratedReferenceFilePath)'))%3b"/>
             <_ReferenceFileLines Include="end."/>
         </ItemGroup>

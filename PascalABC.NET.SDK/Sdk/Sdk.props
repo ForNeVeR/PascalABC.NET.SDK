@@ -23,4 +23,6 @@
         <PackageReference Include="$(PascalABCNETCompilerPackageName)" Version="$(PascalABCNETCompilerPackageVersion)" PrivateAssets="All"/>
     </ItemGroup>
 
+    <UsingTask TaskName="ResolvePascalReferenceAssemblies"
+               AssemblyFile="$(MSBuildThisFileDirectory)..\tools\PascalABC.NET.SDK.dll"/>
 </Project>

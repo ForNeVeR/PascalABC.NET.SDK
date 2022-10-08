@@ -56,7 +56,7 @@ public abstract class SdkTestBase
 
     private static string GetDevPackageVersion(string sourceRoot)
     {
-        var sdkProjPath = Path.Combine(sourceRoot, "PascalABC.NET.SDK/PascalABC.NET.SDK.proj");
+        var sdkProjPath = Path.Combine(sourceRoot, "PascalABC.NET.SDK/PascalABC.NET.SDK.csproj");
         var document = XDocument.Load(sdkProjPath);
         var versionElement = document.XPathSelectElement("//VersionPrefix");
         return versionElement!.Value + "-dev";
