@@ -16,7 +16,6 @@ public class ResolvePascalReferenceAssemblies : Task
 
     public override bool Execute()
     {
-        // Debugger.Launch();
         var runtimeLibs = RuntimeCopyLocalItems.ToDictionary(GetNuGetKey, item => item.ItemSpec);
         var compileTimeLibs = ResolvedCompileFileDefinitions.ToDictionary(item => Path.GetFullPath(item.ItemSpec), GetNuGetKey);
 
