@@ -79,7 +79,7 @@ You can change the following properties in your project file to customize the SD
 Development
 -----------
 
-To run the unit testing suite, first publish the development packages using this shell command ([PowerShell][powershell] is required):
+Before opening the solution or running the unit testing suite, first publish the development packages using this shell command ([PowerShell][powershell] is required):
 
 ```console
 $ pwsh ./scripts/build-packages.ps1
