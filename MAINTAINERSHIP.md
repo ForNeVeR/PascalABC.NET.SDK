@@ -21,7 +21,7 @@ Publishing the SDK Package
 1. Update the copyright year in the `LICENSE.md`, if required.
 2. Choose a new version according to [Semantic Versioning][semver].
 3. Update the package version in the following places:
-    - `PascalABC.NET.SDK/PascalABC.NET.SDK.proj` (the `VersionPrefix` element)
+    - `PascalABC.NET.SDK/PascalABC.NET.SDK.csproj` (the `VersionPrefix` element)
     - `README.md` (the example section, look for `Sdk=`)
     - `PascalABC.NET.SDK.Demo/PascalABC.NET.SDK.Demo.pasproj` (line 1)
 4. Make sure there's a properly formed version entry in the `CHANGELOG.md` (often it can be created by renaming the **Unreleased** section).

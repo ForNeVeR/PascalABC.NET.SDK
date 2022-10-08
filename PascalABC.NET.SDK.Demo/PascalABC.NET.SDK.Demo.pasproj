@@ -1,4 +1,4 @@
-<Project Sdk="FVNever.PascalABC.NET.SDK/2.0.0-dev">
+<Project Sdk="FVNever.PascalABC.NET.SDK/2.0.1-dev">
 
     <PropertyGroup>
         <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
