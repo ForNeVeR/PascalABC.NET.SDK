@@ -10,4 +10,5 @@ public class SimpleCompilationTests : SdkTestBase
     [Fact] public Task TestMultiProjectSolution() => TestSuccess(
         "MultiProjectSolution/MultiProjectSolution.sln",
         "MultiProjectSolution/PascalProject/bin/Debug/net472/PascalProject.exe");
+    [Fact] public Task TestSystemMemory() => TestSuccess("TestSystemMemory.pasproj", "bin/Debug/net472/TestSystemMemory.exe");
 }
