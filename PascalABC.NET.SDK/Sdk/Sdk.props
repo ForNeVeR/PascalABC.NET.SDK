@@ -1,9 +1,13 @@
-﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
     <PropertyGroup Label="SdkCustomization">
         <EnableDefaultItems>false</EnableDefaultItems>
         <OutputType>Exe</OutputType>
     </PropertyGroup>
+
+    <ItemGroup>
+        <AvailableItemName Include="MainCompile" />
+    </ItemGroup>
 
     <Import Project="Sdk.props" Sdk="Microsoft.NET.Sdk" />
 
