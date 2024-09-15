@@ -47,7 +47,7 @@ jobs:
           path: nupkg/*.nupkg
 
       - name: Upload the changelog
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: changelog-section.md
           path: ./changelog-section.md
