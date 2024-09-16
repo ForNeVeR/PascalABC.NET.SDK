@@ -19,7 +19,7 @@
 
     <ItemGroup>
         <ProjectReference Include="..\PascalABC.NET.SDK\PascalABC.NET.SDK.csproj"/>
-        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.0.0"/>
+        <PackageReference Include="Microsoft.Build.Utilities.Core" Version="17.11.4"/>
     </ItemGroup>
 
 </Project>
