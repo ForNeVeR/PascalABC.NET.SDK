@@ -23,7 +23,7 @@ jobs:
         run: Write-Output "::set-output name=version::$($env:GITHUB_REF -replace '^refs/tags/v', '')"
 
       - name: Fetch the sources
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up .NET 6.0 SDK
         uses: actions/setup-dotnet@v4
