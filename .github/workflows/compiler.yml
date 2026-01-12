@@ -2,7 +2,9 @@
 
 on:
   push:
-    branches: [ main ]
+    branches:
+    - main
+    - renovate/**
   pull_request:
     branches: [ main ]
   workflow_dispatch:
