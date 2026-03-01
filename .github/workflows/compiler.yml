@@ -31,7 +31,7 @@ jobs:
         run: dotnet pack PascalABC.NET.Compiler --output nupkg
 
       - name: Upload the artifact
-        uses: actions/upload-artifact@v6
+        uses: actions/upload-artifact@v7
         with:
           name: compiler-package
           path: nupkg/*.nupkg
